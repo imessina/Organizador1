@@ -1,0 +1,7 @@
+{
+  "name": "organizador",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
