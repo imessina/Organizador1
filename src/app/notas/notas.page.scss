@@ -1,0 +1,11 @@
+/* Estilos para la página de notas */
+.notas-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .nota-item {
+    margin-bottom: 8px;
+  }
+  

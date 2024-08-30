@@ -1,13 +1,23 @@
-<ion-header [translucent]="true">
+<ion-header>
   <ion-toolbar>
-    <ion-title>notas</ion-title>
+    <ion-title>Notas</ion-title>
+    
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">notas</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-button (click)="agregarNota()">Agregar Nota</ion-button>
+  <ion-list>
+    <ion-item *ngFor="let nota of notas">
+      <ion-label>
+        <h2>{{ nota.titulo }}</h2>
+        <p>{{ nota.contenido }}</p>
+      </ion-label>
+      <ion-buttons slot="end">
+        <ion-button (click)="editarNota(nota)">Editar</ion-button>
+        <ion-button (click)="eliminarNota(nota)">Eliminar</ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-list>
+  <ion-button routerLink="/bienvenida">Volver a Inicio</ion-button>
 </ion-content>

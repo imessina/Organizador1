@@ -9,8 +9,8 @@ import { RecuperarPasswordComponent } from '../recuperar-password/recuperar-pass
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  usuario: string = '';
-  password: string = '';
+  usuario: string = 'Felipe';
+  password: string = 'Duoc2024';
 
   constructor(private router: Router, private modalController: ModalController) {}
 
