@@ -4,6 +4,8 @@ import { AlertController } from '@ionic/angular';
 interface Contacto {
   nombre: string;
   telefono: string;
+  direccion?: string; // Campo opcional
+  correo?: string;    // Campo opcional
 }
 
 @Component({
@@ -29,6 +31,16 @@ export class ContactosPage {
           name: 'telefono',
           type: 'text',
           placeholder: 'Teléfono'
+        },
+        {
+          name: 'direccion',
+          type: 'text',
+          placeholder: 'Dirección'
+        },
+        {
+          name: 'correo',
+          type: 'email',
+          placeholder: 'Correo Electrónico'
         }
       ],
       buttons: [
@@ -39,7 +51,12 @@ export class ContactosPage {
         {
           text: 'Agregar',
           handler: (data: any) => {
-            this.contactos.push(data as Contacto);
+            this.contactos.push({
+              nombre: data.nombre,
+              telefono: data.telefono,
+              direccion: data.direccion,
+              correo: data.correo
+            } as Contacto);
           }
         }
       ]
@@ -63,6 +80,18 @@ export class ContactosPage {
           type: 'text',
           value: contacto.telefono,
           placeholder: 'Teléfono'
+        },
+        {
+          name: 'direccion',
+          type: 'text',
+          value: contacto.direccion || '', // Campo opcional
+          placeholder: 'Dirección'
+        },
+        {
+          name: 'correo',
+          type: 'email',
+          value: contacto.correo || '', // Campo opcional
+          placeholder: 'Correo Electrónico'
         }
       ],
       buttons: [
@@ -75,7 +104,12 @@ export class ContactosPage {
           handler: (data: any) => {
             const index = this.contactos.indexOf(contacto);
             if (index > -1) {
-              this.contactos[index] = data as Contacto;
+              this.contactos[index] = {
+                nombre: data.nombre,
+                telefono: data.telefono,
+                direccion: data.direccion,
+                correo: data.correo
+              } as Contacto;
             }
           }
         }

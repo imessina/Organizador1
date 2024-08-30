@@ -3,19 +3,19 @@
     <ion-title>Contactos</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-  <ion-button (click)="agregarContacto()">Agregar Contacto</ion-button>
+ 
+<ion-content class="ion-padding">
+  <ion-button (click)="agregarContacto()">Añadir Contacto</ion-button>
   <ion-list>
     <ion-item *ngFor="let contacto of contactos">
       <ion-label>
         <h2>{{ contacto.nombre }}</h2>
-        <p>{{ contacto.telefono }}</p>
+        <p><strong>Teléfono:</strong> {{ contacto.telefono }}</p>
+        <p><strong>Dirección:</strong> {{ contacto.direccion }}</p>
+        <p><strong>Correo:</strong> {{ contacto.correo }}</p>
       </ion-label>
-      <ion-buttons slot="end">
-        <ion-button (click)="editarContacto(contacto)">Editar</ion-button>
-        <ion-button (click)="eliminarContacto(contacto)">Eliminar</ion-button>
-      </ion-buttons>
+      <ion-button (click)="editarContacto(contacto)" fill="clear">Editar</ion-button>
+      <ion-button (click)="eliminarContacto(contacto)" fill="clear">Eliminar</ion-button>
     </ion-item>
   </ion-list>
   <ion-button routerLink="/bienvenida">Volver a Inicio</ion-button>

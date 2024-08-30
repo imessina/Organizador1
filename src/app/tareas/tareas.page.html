@@ -2,17 +2,20 @@
   <ion-toolbar>
     <ion-title>Tareas</ion-title>
   </ion-toolbar>
-  
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-button (click)="addTarea()">Agregar Tarea</ion-button>
-
+  <ion-button (click)="agregarTarea()">Añadir Tarea</ion-button>
   <ion-list>
     <ion-item *ngFor="let tarea of tareas">
-      <ion-label>{{ tarea.titulo }}</ion-label>
-      <ion-button fill="clear" (click)="editTarea(tarea)">Editar</ion-button>
-      <ion-button fill="clear" (click)="deleteTarea(tarea)">Eliminar</ion-button>
+      <ion-label>
+        <h2>{{ tarea.titulo }}</h2>
+        <p>{{ tarea.contenido }}</p>
+        <p><strong>Fecha:</strong> {{ tarea.fecha }}</p>
+        <p><strong>Prioridad:</strong> {{ tarea.prioridad }}</p>
+      </ion-label>
+      <ion-button (click)="editarTarea(tarea)" fill="clear">Editar</ion-button>
+      <ion-button (click)="eliminarTarea(tarea)" fill="clear">Eliminar</ion-button>
     </ion-item>
   </ion-list>
   <ion-button routerLink="/bienvenida">Volver a Inicio</ion-button>

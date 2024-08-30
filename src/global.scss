@@ -38,6 +38,14 @@
 
 
 /* Estilos Globales */
+/* Define the global background style */
+
+ion-header,
+ion-toolbar,
+ion-footer {
+  background: transparent; /* Ensure header and footer are transparent if you want the background image visible behind them */
+}
+
 ion-header {
     --background: #3880ff; /* Color de fondo del encabezado */
     --color: #fff; /* Color del texto */
