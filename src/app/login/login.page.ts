@@ -9,16 +9,30 @@ import { RecuperarPasswordComponent } from '../recuperar-password/recuperar-pass
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  usuario: string = 'Felipe';
-  password: string = 'Duoc2024';
+  usuario: string = '';
+  password: string = '';
+  rating: number = 0; // Calificación seleccionada
+  hoveredRating: number = 0; // Calificación mientras se pasa el mouse
+  mensajeVisible: boolean = false; // Mostrar mensaje de agradecimiento por 3 segundos
+
+  // Lista de usuarios válidos
+  usuariosValidos: { usuario: string, contraseña: string, nombre: string }[] = [
+    { usuario: 'Admin', contraseña: 'Duoc2024', nombre: 'Administrador' },
+    { usuario: 'FelipeE', contraseña: 'Duoc2024', nombre: 'Felipe Echeverria' },
+    { usuario: 'IgnacioM', contraseña: 'Duoc2024', nombre: 'Ignacio Messina' }
+  ];
 
   constructor(private router: Router, private modalController: ModalController) {}
 
   login() {
-    if (this.validarPassword(this.password)) {
+    const usuarioEncontrado = this.usuariosValidos.find(u => u.usuario === this.usuario && u.contraseña === this.password);
+    
+    if (usuarioEncontrado) {
+      // Guardar el nombre del usuario en localStorage
+      localStorage.setItem('nombreUsuario', usuarioEncontrado.nombre);
       this.router.navigate(['/bienvenida']);
     } else {
-      alert('Contraseña no válida.');
+      alert('Usuario o contraseña no válidos.');
     }
   }
 
@@ -32,5 +46,24 @@ export class LoginPage {
       component: RecuperarPasswordComponent
     });
     return await modal.present();
+  }
+
+  // Métodos para la calificación
+  rate(stars: number) {
+    this.rating = stars;
+    this.mensajeVisible = true; // Mostrar mensaje de agradecimiento
+
+    // Ocultar el mensaje después de 3 segundos
+    setTimeout(() => {
+      this.mensajeVisible = false;
+    }, 3000);
+  }
+
+  setHoveredRating(stars: number) {
+    this.hoveredRating = stars;
+  }
+
+  resetHoveredRating() {
+    this.hoveredRating = 0;
   }
 }

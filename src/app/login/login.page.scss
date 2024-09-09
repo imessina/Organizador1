@@ -21,4 +21,32 @@ ion-content {
   .login-button {
     margin-top: 16px;
   }
-  
+
+
+  /* Estilos para el mensaje de agradecimiento */
+.mensaje-calificacion {
+  text-align: center;
+  color: white;
+  margin-top: 10px;
+}
+
+/* Coloca el sistema de calificación en la parte inferior derecha */
+.calificacion-wrapper {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+}
+
+.calificacion {
+  text-align: center;
+}
+
+.rating ion-button span.highlighted {
+  color: gold; /* Color de la estrella resaltada */
+}
+
+.rating ion-button span {
+  font-size: 24px;
+  color: gray; /* Color de la estrella no resaltada */
+  transition: color 0.2s ease;
+}

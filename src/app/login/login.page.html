@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Inicio de sesión</ion-title>
+    <ion-title>BigNote by EcheMessi - Inicio de sesión</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -20,4 +20,23 @@
 
     <ion-button expand="full" fill="clear" (click)="openRecuperarPassword()">Olvidé mi contraseña</ion-button>
   </form>
+
+  <!-- Mensaje de agradecimiento por la calificación justo debajo del formulario de login -->
+  <p *ngIf="mensajeVisible" class="mensaje-calificacion">Gracias por tu calificación de {{ rating }} estrella(s).</p>
+
+  <!-- Sistema de calificación, ubicado en la parte inferior izquierda -->
+  <div class="calificacion-wrapper">
+    <div class="calificacion">
+      <p>Califica esta app</p>
+      <div class="rating">
+        <ion-button fill="clear" 
+                    *ngFor="let star of [1, 2, 3, 4, 5]; let i = index"
+                    (click)="rate(star)"
+                    (mouseover)="setHoveredRating(star)"
+                    (mouseleave)="resetHoveredRating()">
+          <span [ngClass]="{'highlighted': star <= (hoveredRating || rating)}">★</span>
+        </ion-button>
+      </div>
+    </div>
+  </div>
 </ion-content>
