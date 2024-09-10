@@ -6,7 +6,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-button (click)="agregarNota()">Añadir Nota</ion-button>
+  <ion-button expand="full" (click)="agregarNota()">Añadir Nota</ion-button>
   <ion-list>
     <ion-item *ngFor="let nota of notas">
       <ion-label>
@@ -19,5 +19,5 @@
       </ion-buttons>
     </ion-item>
   </ion-list>
-  <ion-button routerLink="/bienvenida">Volver a Inicio</ion-button>
+  <ion-button expand="full" routerLink="/bienvenida">Volver a Inicio</ion-button>
 </ion-content>

@@ -14,26 +14,23 @@ export class LoginPage {
   rating: number = 0; // Calificación seleccionada
   hoveredRating: number = 0; // Calificación mientras se pasa el mouse
   mensajeVisible: boolean = false; // Mostrar mensaje de agradecimiento por 3 segundos
-
-  // Lista de usuarios válidos
-  usuariosValidos: { usuario: string, contraseña: string, nombre: string }[] = [
-    { usuario: 'Admin', contraseña: 'Duoc2024', nombre: 'Administrador' },
-    { usuario: 'FelipeE', contraseña: 'Duoc2024', nombre: 'Felipe Echeverria' },
-    { usuario: 'IgnacioM', contraseña: 'Duoc2024', nombre: 'Ignacio Messina' }
-  ];
+  isLoading: boolean = false; // Controla la visibilidad de la barra de progreso
 
   constructor(private router: Router, private modalController: ModalController) {}
 
   login() {
-    const usuarioEncontrado = this.usuariosValidos.find(u => u.usuario === this.usuario && u.contraseña === this.password);
-    
-    if (usuarioEncontrado) {
-      // Guardar el nombre del usuario en localStorage
-      localStorage.setItem('nombreUsuario', usuarioEncontrado.nombre);
-      this.router.navigate(['/bienvenida']);
-    } else {
-      alert('Usuario o contraseña no válidos.');
-    }
+    this.isLoading = true; // Mostrar la barra de progreso
+  
+    setTimeout(() => { // Simular un proceso de validación
+      if (this.validarPassword(this.password)) {
+        // Navegar a la página de bienvenida pasando el nombre de usuario como parámetro
+        this.router.navigate(['/bienvenida'], { queryParams: { usuario: this.usuario } });
+      } else {
+        alert('Usuario o contraseña no válidos.');
+      }
+  
+      this.isLoading = false; // Ocultar la barra de progreso
+    }, 2000); // Simular un tiempo de validación de 2 segundos
   }
 
   validarPassword(password: string): boolean {

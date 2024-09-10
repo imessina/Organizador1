@@ -10,13 +10,16 @@ import { LoginPage } from './login.page';
 
 import { RecuperarPasswordModule } from '../recuperar-password/recuperar-password.module'; //
 
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     LoginPageRoutingModule,
-    RecuperarPasswordModule
+    RecuperarPasswordModule,
+    MatProgressBarModule
   ],
   declarations: [LoginPage]
 })

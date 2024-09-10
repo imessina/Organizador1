@@ -18,13 +18,16 @@
 
     <ion-button expand="full" type="submit" [disabled]="!loginForm.form.valid">Ingresar</ion-button>
 
+    <!-- Barra de progreso de Material Angular-->
+    <mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+
     <ion-button expand="full" fill="clear" (click)="openRecuperarPassword()">Olvidé mi contraseña</ion-button>
   </form>
 
-  <!-- Mensaje de agradecimiento por la calificación justo debajo del formulario de login -->
+  <!-- Mensaje de agradecimiento por la calificación-->
   <p *ngIf="mensajeVisible" class="mensaje-calificacion">Gracias por tu calificación de {{ rating }} estrella(s).</p>
 
-  <!-- Sistema de calificación, ubicado en la parte inferior izquierda -->
+  <!-- Sistema de calificación -->
   <div class="calificacion-wrapper">
     <div class="calificacion">
       <p>Califica esta app</p>

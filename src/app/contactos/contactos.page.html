@@ -5,7 +5,7 @@
 </ion-header>
  
 <ion-content class="ion-padding">
-  <ion-button (click)="agregarContacto()">Añadir Contacto</ion-button>
+  <ion-button expand="full" (click)="agregarContacto()">Añadir Contacto</ion-button>
   <ion-list>
     <ion-item *ngFor="let contacto of contactos">
       <ion-label>
@@ -18,5 +18,5 @@
       <ion-button (click)="eliminarContacto(contacto)" fill="clear">Eliminar</ion-button>
     </ion-item>
   </ion-list>
-  <ion-button routerLink="/bienvenida">Volver a Inicio</ion-button>
+  <ion-button expand="full" routerLink="/bienvenida">Volver a Inicio</ion-button>
 </ion-content>

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-bienvenida',
@@ -8,39 +7,19 @@ import { ToastController } from '@ionic/angular';
   styleUrls: ['./bienvenida.page.scss'],
 })
 export class BienvenidaPage implements OnInit {
-  nombreUsuario: string = '';
+  nombreUsuario: string = 'Invitado';
 
-  constructor(
-    private router: Router,
-    private toastController: ToastController
-  ) {}
+  constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
-    // Obtener el nombre del usuario desde localStorage
-    this.nombreUsuario = localStorage.getItem('nombreUsuario') || 'Invitado';
-    this.presentToast(`Bienvenido ${this.nombreUsuario}`);
+    // Obtener el nombre del usuario desde los parámetros de la ruta
+    this.route.queryParams.subscribe(params => {
+      this.nombreUsuario = params['usuario'] || 'Invitado';
+    });
   }
 
   logout() {
-    // Limpiar el nombre del usuario de localStorage
-    localStorage.removeItem('nombreUsuario');
-    this.router.navigate(['/login']); // Redirige al login
-  }
-
-  async presentToast(message: string) {
-    const toast = await this.toastController.create({
-      message: message,
-      duration: 5000, // Duración en milisegundos
-      buttons: [
-        {
-          text: 'Cerrar',
-          role: 'cancel',
-          handler: () => {
-            console.log('Toast cerrado');
-          }
-        }
-      ]
-    });
-    await toast.present();
+    // Redirigir al login cuando se cierra la sesión
+    this.router.navigate(['/login']);
   }
 }

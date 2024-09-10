@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>BigNote by EcheMessi</ion-title>
+    <ion-title class="bienvenida">BigNote by EcheMessi - Bienvenido/a {{ nombreUsuario }}</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="logout()" fill="clear">Cerrar sesión</ion-button>
     </ion-buttons>
@@ -8,8 +8,6 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <p>Bienvenido {{ nombreUsuario }}</p>
-
   <ion-button expand="full" routerLink="/tareas">Tareas</ion-button>
   <ion-button expand="full" routerLink="/notas">Notas</ion-button>
   <ion-button expand="full" routerLink="/contactos">Contactos</ion-button>
