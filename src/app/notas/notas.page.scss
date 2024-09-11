@@ -1,17 +1,61 @@
-/* Estilos para la página de notas */
+/* Fondo de la página */
 ion-content {
-  --background: url('/assets/img/notas.jpg') no-repeat center center / cover;
-  height: 100vh;
-  width: 100vw;
+  --background: url('/assets/img/notas.jpg') no-repeat center center / cover; 
+  /* Imagen de fondo para cubrir toda la pantalla */
+  height: 100vh; /* Altura completa de la vista */
+  width: 100vw;  /* Ancho completo de la vista */
 }
 
-.notas-container {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-  
-  .nota-item {
-    margin-bottom: 8px;
-  }
-  
+/* Barra de título (ion-toolbar) */
+ion-toolbar {
+  --background: #4a90e2; /* Color de fondo azul más claro */
+  --color: white;        /* Color del texto en blanco */
+  font-weight: normal;   /* Reducir el grosor del texto */
+  font-size: 1.2rem;     /* Ajustar el tamaño de la fuente para que no sea demasiado grande */
+}
+
+/* Título de la página */
+ion-title {
+  color: white;          /* Asegurarse de que el texto del título sea blanco */
+  font-weight: normal;   /* Reducir el grosor del texto del título */
+  font-size: 1.2rem;     /* Tamaño de fuente reducido para coincidir con la imagen */
+}
+
+/* Botones principales (Añadir Nota, Volver a Inicio) */
+ion-button {
+  --background: #4a90e2;  /* Color de fondo azul más claro para los botones */
+  --color: white;         /* Texto en blanco */
+  margin-top: 10px;       /* Espacio superior para separar los botones de otros elementos */
+  font-weight: normal;    /* Reducir el grosor del texto */
+  font-size: 1rem;        /* Tamaño de texto del botón ajustado */
+}
+
+/* Ajuste para que el texto dentro de los botones sea claro y legible */
+ion-button::part(native) {
+  color: rgb(242, 243, 234) !important; /* Asegurarse de que el texto de los botones sea blanco */
+  font-weight: normal;      /* Reducir el grosor del texto */
+  font-size: 1rem;          /* Tamaño del texto de los botones */
+}
+
+/* Contenedor de las notas */
+.note-container {
+  display: flex;
+  flex-wrap: wrap;  /* Permitir que las notas se acomoden en varias filas si es necesario */
+  justify-content: space-around; /* Espacio uniforme alrededor de las notas */
+  padding: 16px;    /* Añadir espacio de relleno alrededor del contenedor de notas */
+}
+
+/* Estilo de cada nota (ion-card) */
+ion-card {
+  width: 200px;   /* Ancho de cada tarjeta de nota */
+  margin: 10px;   /* Espacio entre las notas */
+  background-color: rgb(66, 137, 7);  /* Fondo blanco con un poco de transparencia */
+  box-shadow: 0 4px 8px rgba(8, 8, 8, 0.1);  /* Sombra ligera alrededor de la nota */
+  border-radius: 10px;  /* Bordes redondeados */
+}
+
+/* Estilo para la fecha en las notas */
+ion-note {
+  font-size: 12px; /* Tamaño pequeño para las fechas */
+  color: rgb(6, 6, 6);     /* Texto gris para que sea menos prominente */
+}

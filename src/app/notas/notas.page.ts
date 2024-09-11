@@ -1,10 +1,5 @@
-import { Component } from '@angular/core';
-import { AlertController } from '@ionic/angular';
-
-interface Nota {
-  titulo: string;
-  contenido: string;
-}
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { AnimationController, AlertController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-notas',
@@ -12,44 +7,30 @@ interface Nota {
   styleUrls: ['./notas.page.scss'],
 })
 export class NotasPage {
-  notas: Nota[] = [];
+  notas: { id: number, titulo: string, contenido: string, fecha: Date }[] = [];
+  nextId: number = 1;
 
-  constructor(private alertController: AlertController) {}
+  @ViewChild('notaElement', { read: ElementRef }) notaElement!: ElementRef;
 
-  async agregarNota() {
-    const alert = await this.alertController.create({
-      header: 'Nueva Nota',
-      inputs: [
-        {
-          name: 'titulo',
-          type: 'text',
-          placeholder: 'Título'
-        },
-        {
-          name: 'contenido',
-          type: 'textarea',
-          placeholder: 'Contenido'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-        },
-        {
-          text: 'Agregar',
-          handler: (data: any) => {
-            this.notas.push(data as Nota);
-          }
-        }
-      ]
-    });
+  constructor(
+    private animationCtrl: AnimationController,
+    private alertCtrl: AlertController,
+    private navCtrl: NavController  // Inyectar NavController para la navegación
+  ) {}
 
-    await alert.present();
+  agregarNota() {
+    const nuevaNota = {
+      id: this.nextId++,
+      titulo: `Nota ${this.nextId}`,
+      contenido: 'Contenido de la nota',
+      fecha: new Date()
+    };
+    this.notas.push(nuevaNota);
+    this.startAnimation();
   }
 
-  async editarNota(nota: Nota) {
-    const alert = await this.alertController.create({
+  async editarNota(nota: { id: number; titulo: string; contenido: string }) {
+    const alert = await this.alertCtrl.create({
       header: 'Editar Nota',
       inputs: [
         {
@@ -68,27 +49,40 @@ export class NotasPage {
       buttons: [
         {
           text: 'Cancelar',
-          role: 'cancel',
+          role: 'cancel'
         },
         {
           text: 'Guardar',
-          handler: (data: any) => {
-            const index = this.notas.indexOf(nota);
-            if (index > -1) {
-              this.notas[index] = data as Nota;
-            }
+          handler: (data) => {
+            nota.titulo = data.titulo;
+            nota.contenido = data.contenido;
           }
         }
       ]
     });
-
     await alert.present();
   }
 
-  eliminarNota(nota: Nota) {
-    const index = this.notas.indexOf(nota);
-    if (index > -1) {
-      this.notas.splice(index, 1);
-    }
+  eliminarNota(id: number) {
+    this.notas = this.notas.filter(nota => nota.id !== id);
+  }
+
+  volverInicio() {
+    this.navCtrl.navigateBack('/bienvenida');  // Redirigir a la página de inicio
+  }
+
+  startAnimation() {
+    const animation = this.animationCtrl
+      .create()
+      .addElement(this.notaElement.nativeElement)
+      .duration(1000)
+      .iterations(1)
+      .keyframes([
+        { offset: 0, transform: 'scale(0)', opacity: '0' },
+        { offset: 0.5, transform: 'scale(1.2)', opacity: '0.5' },
+        { offset: 1, transform: 'scale(1)', opacity: '1' },
+      ]);
+    
+    animation.play();
   }
 }
