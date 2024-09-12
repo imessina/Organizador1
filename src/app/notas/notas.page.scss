@@ -1,7 +1,6 @@
 /* Fondo de la página */
 ion-content {
   --background: url('/assets/img/notas.jpg') no-repeat center center / cover; 
-  /* Imagen de fondo para cubrir toda la pantalla */
   height: 100vh; /* Altura completa de la vista */
   width: 100vw;  /* Ancho completo de la vista */
 }
@@ -10,8 +9,11 @@ ion-content {
 .note-container {
   display: flex;
   flex-wrap: wrap;  /* Permitir que las notas se acomoden en varias filas si es necesario */
-  justify-content: space-around; /* Espacio uniforme alrededor de las notas */
-  padding: 16px;    /* Añadir espacio de relleno alrededor del contenedor de notas */
+  justify-content: space-around; /* Espacio uniforme alrededor de las notas */ 
+}
+
+.note-item {
+  margin-bottom: 8px;
 }
 
 /* Estilo de cada nota (ion-card) */
@@ -26,5 +28,14 @@ ion-card {
 /* Estilo para la fecha en las notas */
 ion-note {
   font-size: 12px; /* Tamaño pequeño para las fechas */
-  color: rgb(6, 6, 6);     /* Texto gris para que sea menos prominente */
+  color: rgb(0, 0, 0);     /* Texto gris para que sea menos prominente */
+}
+
+ion-card-content {
+  color: rgb(0, 0, 0);
+}
+
+ion-card-title {
+  font-size: medium;
+  color: rgb(0, 0, 0)
 }

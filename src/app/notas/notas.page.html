@@ -4,9 +4,10 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding">
   <!-- Botón para agregar notas -->
-  <ion-button expand="full" color="secondary" (click)="agregarNota()">Añadir Nota</ion-button>
+  <ion-button expand="full" (click)="agregarNota()">Añadir Nota</ion-button>
+  
 
   <div class="note-container">
     <ion-card *ngFor="let nota of notas" #notaElement>
@@ -19,12 +20,14 @@
         <p>{{ nota.contenido }}</p>
 
         <!-- Botones para editar y eliminar -->
-        <ion-button fill="outline" size="small" color="primary" (click)="editarNota(nota)">Editar</ion-button>
-        <ion-button fill="outline" size="small" color="danger" (click)="eliminarNota(nota.id)">Eliminar</ion-button>
+        <ion-button fill="outline" size="small" color="secondary" (click)="editarNota(nota)">Editar</ion-button>
+        <ion-button fill="outline" size="small" color="secondary" (click)="eliminarNota(nota.id)">Eliminar</ion-button>
       </ion-card-content>
     </ion-card>
   </div>
 
+
+
   <!-- Botón para volver a inicio -->
-  <ion-button expand="full" color="primary" (click)="volverInicio()">Volver a Inicio</ion-button>
+  <ion-button expand="full" (click)="volverInicio()">Volver a Inicio</ion-button>
 </ion-content>
