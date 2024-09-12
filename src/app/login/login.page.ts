@@ -63,4 +63,8 @@ export class LoginPage {
   resetHoveredRating() {
     this.hoveredRating = 0;
   }
+
+  openRegistro() {
+    this.router.navigate(['/registro']);
+  }
 }

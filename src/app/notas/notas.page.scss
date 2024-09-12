@@ -6,37 +6,6 @@ ion-content {
   width: 100vw;  /* Ancho completo de la vista */
 }
 
-/* Barra de título (ion-toolbar) */
-ion-toolbar {
-  --background: #4a90e2; /* Color de fondo azul más claro */
-  --color: white;        /* Color del texto en blanco */
-  font-weight: normal;   /* Reducir el grosor del texto */
-  font-size: 1.2rem;     /* Ajustar el tamaño de la fuente para que no sea demasiado grande */
-}
-
-/* Título de la página */
-ion-title {
-  color: white;          /* Asegurarse de que el texto del título sea blanco */
-  font-weight: normal;   /* Reducir el grosor del texto del título */
-  font-size: 1.2rem;     /* Tamaño de fuente reducido para coincidir con la imagen */
-}
-
-/* Botones principales (Añadir Nota, Volver a Inicio) */
-ion-button {
-  --background: #4a90e2;  /* Color de fondo azul más claro para los botones */
-  --color: white;         /* Texto en blanco */
-  margin-top: 10px;       /* Espacio superior para separar los botones de otros elementos */
-  font-weight: normal;    /* Reducir el grosor del texto */
-  font-size: 1rem;        /* Tamaño de texto del botón ajustado */
-}
-
-/* Ajuste para que el texto dentro de los botones sea claro y legible */
-ion-button::part(native) {
-  color: rgb(242, 243, 234) !important; /* Asegurarse de que el texto de los botones sea blanco */
-  font-weight: normal;      /* Reducir el grosor del texto */
-  font-size: 1rem;          /* Tamaño del texto de los botones */
-}
-
 /* Contenedor de las notas */
 .note-container {
   display: flex;
